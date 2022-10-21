@@ -27,18 +27,18 @@ export default function Food({
   const { available } = food;
   const [isAvailable, setIsAvailable] = useState(available);
 
-  async function toggleAvailable() {
+  const toggleAvailable = async () => {
     await api.put(`/foods/${food.id}`, {
       ...food,
       available: !isAvailable,
     });
 
     setIsAvailable(!isAvailable);
-  }
+  };
 
-  function setEditingFood() {
+  const setEditingFood = () => {
     handleEditFood(food);
-  }
+  };
 
   return (
     <Container available={isAvailable}>
